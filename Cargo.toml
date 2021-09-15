@@ -1,0 +1,9 @@
+[package]
+name = "novuskinc"
+version = "0.1.0"
+authors = ["The New Kernel developers"]
+edition = "2018"
+description = "Most of novuskinc from Novusk, used for make userspace applications"
+
+[dependencies]
+cfg-if = "1.0.0"
