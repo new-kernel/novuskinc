@@ -4,6 +4,9 @@ version = "0.1.0"
 authors = ["The New Kernel developers"]
 edition = "2018"
 description = "Most of novuskinc from Novusk, used for making userspace applications"
+repository = "https://github.com/new-kernel/novuskinc/"
+readme = "README.md"
+documentation = "https://docs.rs/novuskinc/latest/novuskinc"
 
 [dependencies]
 cfg-if = "1.0.0"
