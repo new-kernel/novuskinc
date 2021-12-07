@@ -1,4 +1,5 @@
 # novuskinc
 
-Most of novuskinc from Novusk, used for making userspace applications
+Most of [novuskinc](https://github.com/NathanMcMillan54/novusk/tree/master/include/novusk) from 
+[Novusk](https://github.com/NathanMcMillan54/novusk), used for making Novusk related projects
 
