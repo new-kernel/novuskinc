@@ -4,5 +4,6 @@
 
 pub mod init;
 pub mod kernel;
+pub mod module;
 
 
