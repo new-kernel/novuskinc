@@ -7,6 +7,7 @@ description = "Most of novuskinc from Novusk, used for making userspace applicat
 repository = "https://github.com/new-kernel/novuskinc/"
 readme = "README.md"
 documentation = "https://docs.rs/novuskinc/latest/novuskinc"
+license = "MIT"
 
 [dependencies]
 cfg-if = "1.0.0"
