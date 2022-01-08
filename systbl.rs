@@ -24,3 +24,10 @@ cfg_if! {
         pub const VERSION: i32 = 2;
     }
 }
+
+cfg_if! {
+    if #[cfg(any(target_arch = "riscv32"))] {
+        pub const READ: i32 = 0;
+        pub const WRITE: i32 = 1;
+    }
+}
