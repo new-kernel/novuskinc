@@ -1,0 +1,1 @@
+initSidebarItems({"static":[["DRIVER_MANAGER","This is a static that contains all the drivers that Novusk will use, it is defined in `drivers/drivers.rs` which should be included in the architecture specific kernel."]],"struct":[["DeviceDriverManager","`DeviceDriverManager` is used to manage main device drivers"]]});

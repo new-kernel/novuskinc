@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["device_timer_init","`device_timer_init` is used to initialize the device’s timer peripheral."]],"trait":[["Timer",""]]});

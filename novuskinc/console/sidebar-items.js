@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["KernelConsole","The `KernelConsole` struct should be used as a field value of the console driver."]],"trait":[["KernelConsoleDriver","The console driver has to implement `KernelConsoleDriver` because the functions the driver implements get called by the kernel"]]});

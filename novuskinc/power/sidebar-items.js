@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["PM_REBOOT","Reboots the device when used with `set_power_mode`."],["PM_SHUTDOWN","Shutsdown the device when used with `set_power_mode`."],["PM_SLEEP",""]],"fn":[["reboot",""],["set_power_mode",""],["shutdown",""]]});

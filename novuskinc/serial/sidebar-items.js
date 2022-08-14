@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["early_serial_init","`early_serial_init` is used to initialize a `SimpleUart` driver, this is usually used for debugging and comes before the main `Uart` driver is initialized."]],"struct":[["SimpleUart","`SimpleUart` is a serial driver mainly used for early printing and debugging"]]});

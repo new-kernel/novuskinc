@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["load_elf","Loads an ELF executable from the given path and returns it’s entry address."],["run_elf","Run the ELF from it’s entry address (`main` or `_start` function)."]]});

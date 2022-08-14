@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["device_init","`device_init` is usually called in `setup_arch`, this function sets up some device specific functions."],["early_device_init","`early_device_init` is intended for setting device specific drivers to `DEVICE_DRIVERS`."]]});
