@@ -24,7 +24,7 @@ impl Driver for EmptyDriver {
         NONE
     }
 
-    fn init(&self) -> DriverResult {
+    fn init(&mut self) -> DriverResult {
         Err("Unimplemented")
     }
 }
