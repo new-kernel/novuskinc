@@ -33,7 +33,7 @@ pub trait Driver: KernelConsoleDriver + FrameBufferGraphics + KeyboardInput + St
 
     /// The init function needs to be used to initialize the driver, it is what the kernel calls to
     /// start it.
-    fn init(&self) -> DriverResult {
+    fn init(&mut self) -> DriverResult {
         return Err("Unimplemented");
     }
 }
