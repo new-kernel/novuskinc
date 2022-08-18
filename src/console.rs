@@ -47,31 +47,31 @@ impl KernelConsole {
 /// implements get called by the kernel
 pub trait KernelConsoleDriver {
     /// The ``write_character`` function is used to write a single character to a certain place
-    fn write_character(&mut self, c: char, x: u16, y: u16) {
+    fn write_character(&self, c: char, x: u16, y: u16) {
 
     }
 
     /// The ``write_string`` function is used to write a string and should call ``write_character``
     /// to write the characters individually
-    fn write_string(&mut self, string: &str, x: u16, y: u16) {
+    fn write_string(&self, string: &str, x: u16, y: u16) {
         for b in string.as_bytes() {
             self.write_character(*b as char, x, y);
         }
     }
 
     /// The ``new_line`` function is used to move to the next line for the next character to be placed
-    fn new_line(&mut self) {
+    fn new_line(&self) {
 
     }
 
     /// The ``clear_screen`` function is used to clear the kernel console, the option value is an
     /// optional argument, it can be used for whatever you want.
-    fn clear_screen(&mut self, option: u16) {
+    fn clear_screen(&self, option: u16) {
 
     }
 
     /// This should return the ``width`` and ``height`` field of ``KernelConsole.``
-    fn dimensions(&mut self) -> (u16, u16) {
+    fn dimensions(&self) -> (u16, u16) {
         return (0, 0);
     }
 }

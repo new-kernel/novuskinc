@@ -21,7 +21,7 @@ pub trait Timer {
         0
     }
 
-    fn set_value(&mut self, val: u32) {
+    fn set_value(&self, val: u32) {
 
     }
 }

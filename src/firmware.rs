@@ -14,7 +14,7 @@ pub trait FirmwareInterface {
         return "";
     }
 
-    fn mb_call(&mut self, channel: u32) -> Result<(), u32> {
+    fn mb_call(&self, channel: u32) -> Result<(), u32> {
         Err(FMI_RESPONSE_ERROR)
     }
 
@@ -22,7 +22,7 @@ pub trait FirmwareInterface {
         FMI_STATUS_FULL
     }
 
-    fn add_index(&mut self, index: usize, val: u32) {
+    fn add_index(&self, index: usize, val: u32) {
 
     }
 }

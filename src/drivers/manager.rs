@@ -16,7 +16,7 @@ extern "C" {
 /// Most architectures Novusk supports have an allocator but for the ones that don't have their own
 /// driver manager.
 pub struct DeviceDriverManager {
-    pub drivers: Vec<&'static mut dyn Driver>,
+    pub drivers: Vec<&'static dyn Driver>,
 }
 
 impl DeviceDriverManager {
@@ -28,13 +28,13 @@ impl DeviceDriverManager {
 
     /// ``add_driver`` is used to add a device driver to the manager, the "driver" argument can be
     /// any struct that implements ``Driver``
-    pub fn add_driver(&mut self, driver: &'static mut dyn Driver) {
+    pub fn add_driver(&mut self, driver: &'static dyn Driver) {
         self.drivers.push(driver);
     }
 
     /// The ``get_driver`` function returns a device driver. The "name" argument is what
     /// ``driver_name`` returns from ``Driver``
-    pub fn get_driver(&'static mut self, name: &'static str) -> Option<&'static mut dyn Driver> {
+    pub fn get_driver(&'static mut self, name: &'static str) -> Option<&'static dyn Driver> {
         for d in 0..self.drivers.len() {
             if name == self.drivers[d].name() {
                 return Some(self.drivers[d]);
