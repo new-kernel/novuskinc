@@ -20,6 +20,7 @@ pub mod power;
 pub mod prelude;
 pub mod serial;
 pub mod storage;
+pub mod syscalls;
 pub mod timer;
 
 #[cfg(feature = "v3")]
