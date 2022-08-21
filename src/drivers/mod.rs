@@ -5,6 +5,10 @@ pub mod empty;
 pub mod manager;
 pub mod names;
 
+extern "C" {
+    pub fn get_driver(name: &'static str) -> &'static dyn Driver;
+}
+
 pub type DriverResult = Result<(), &'static str>;
 
 pub trait Driver: KernelConsoleDriver + FrameBufferGraphics + KeyboardInput + Storage {
