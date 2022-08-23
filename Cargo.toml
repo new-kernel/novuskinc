@@ -6,6 +6,14 @@ description = "A lib used for anything related to Novusk"
 license = "MIT"
 publish = false
 
+[workspace]
+members = [
+    "macros/",
+]
+
+[dependencies]
+novuskinc_macros = { path = "macros/" }
+
 [features]
 v3 = []
 v4 = []

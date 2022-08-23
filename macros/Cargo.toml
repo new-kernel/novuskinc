@@ -1,0 +1,8 @@
+[package]
+name = "novuskinc_macros"
+version = "0.1.0"
+edition = "2021"
+description = "Proc macros for Novuskinc"
+
+[lib]
+proc-macro = true

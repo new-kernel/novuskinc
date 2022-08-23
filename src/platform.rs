@@ -8,7 +8,7 @@ extern "C" {
 }
 
 /// Messages for when a device is initialized unsuccessfully.
-pub const DEVICE_INIT_ERRORS: &'static [&'static str; 4] = &[
+pub const DEVICE_INIT_ERRORS: &[&str; 4] = &[
     "Device initialization shouldn't have failed",
     "Failed to initialize driver[s]",
     "Running on an invalid device",

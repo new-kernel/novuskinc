@@ -1,21 +1,10 @@
-#[macro_export]
-macro_rules! module_init {
-    ($km_name_init:ident, $km_name_start:ident) => {
-        #[no_mangle]
-        pub extern "C" fn $km_name_init() {
-            $km_name_start();
-        }
-    };
-}
+pub use novuskinc_macros::{module_end, module_init};
 
-#[macro_export]
-macro_rules! module_end {
-   ($km_name_end:ident, $km_name_finish:ident) => {
-        #[no_mangle]
-        pub extern "C" fn $km_name_end() {
-            $km_name_finish();
-        }
-    };
+pub enum ModuleType {
+    /// ``InKernel`` is for a module that is linked to Novusk
+    InKernel,
+    /// ``InUser`` is for a module that runs outside of Novusk, it is used for
+    InUser,
 }
 
 #[macro_export]
