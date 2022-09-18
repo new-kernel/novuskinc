@@ -21,7 +21,7 @@ extern "C" {
     // Keyboard read
     pub fn sys_keyread(buf: u8) -> *const u8;
     // File read
-    pub fn sys_fread(file: &'static [u8], )
+    pub fn sys_fread(file: &'static [u8], buf: u8) -> *const u8;
 
     // GPU write
     pub fn sys_gpu_write(index: u8, value: *const u8);
