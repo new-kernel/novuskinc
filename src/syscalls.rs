@@ -4,7 +4,7 @@ extern "C" {
 
     /// This function is defined by the architecture specific kernel, it gets the syscall arguments
     /// and calls the common or architecture syscall.
-    pub fn arch_syscall() -> &[*const u8];
+    pub fn arch_syscall() -> &'static [*const u8];
 
     // Common system calls
     // Write
