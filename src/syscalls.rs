@@ -2,11 +2,9 @@ extern "C" {
     /// ``do_syscall`` is used to call the main system call handler.
     pub fn do_syscall(sys_num: usize, sys_args: &[*const u8]) -> &[*const u8];
 
-    /// This function is defined by the architecture specific kernel, it matches the ``sys_num``
-    /// with the system call it represents and calls it with the arguments needed for the system
-    /// call.
-    pub fn arch_syscall(sys_num: usize, sys_args: &[*const u8]) -> &[*const u8];
-
+    /// This function is defined by the architecture specific kernel, it gets the syscall arguments
+    /// and calls the common or architecture syscall.
+    pub fn arch_syscall() -> &[*const u8];
 
     // Common system calls
     // Write
