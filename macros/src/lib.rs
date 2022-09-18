@@ -40,8 +40,8 @@ pub fn module_init(input: TokenStream) -> TokenStream {
     match &*args[2].replace(",", "") {
         "InKernel" => {
             output = format!("{}{}{}{}{}{}{}",
-                           "#[no_mangle]\npub unsafe extern \"C\" fn ", "init_", args[3], "() {\n",
-                           "_init_", args[3], "();\n}"
+                           "#[no_mangle]\npub unsafe extern \"C\" fn ", "init_", args[3], "(km: &mut novuskinc::module::KernelModule) {\n",
+                           "_init_", args[3], "(km);\n}"
             );
         },
         "InUser" => {
@@ -72,12 +72,24 @@ pub fn module_init(input: TokenStream) -> TokenStream {
 /// module_end!(driver);
 #[proc_macro]
 pub fn module_end(input: TokenStream) -> TokenStream {
+    let args = Vec::from_iter(input.to_string().split(" ").map(String::from));
     let mut output = String::new();
 
-    output = format!("{}{}{}{}{}{}{}",
-                     "#[no_mangle]\npub unsafe extern \"C\" fn ", "end_", input.to_string(), "() {\n",
-                     "_end_", input.to_string(), "();\n}"
-    );
+    match &*args[2].replace(",", "") {
+        "InKernel" => {
+            output = format!("{}{}{}{}{}{}{}",
+                             "#[no_mangle]\npub unsafe extern \"C\" fn ", "end_", args[3].as_str(), "(km: &mut novuskinc::module::KernelModule) {\n",
+                             "_end_", args[3].as_str(), "(km);\n}"
+            );
+        }
+        _ => {
+            output = format!("{}{}{}{}{}{}{}",
+                             "#[no_mangle]\npub unsafe extern \"C\" fn ", "end_", input.to_string(), "() {\n",
+                             "_end_", input.to_string(), "();\n}"
+            );
+        }
+    }
 
     return output.parse().unwrap();
 }
+

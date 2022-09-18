@@ -3,7 +3,7 @@
 #[macro_use] extern crate alloc;
 #[macro_use] pub extern crate novuskinc_macros;
 
-pub use novuskinc_macros::{module_init};
+pub use novuskinc_macros::{module_end, module_init};
 
 pub mod console;
 pub mod elf;

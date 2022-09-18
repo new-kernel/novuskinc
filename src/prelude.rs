@@ -12,5 +12,3 @@ pub use crate::power::*;
 pub use crate::serial::*;
 pub use crate::storage::*;
 pub use crate::timer::*;
-
-pub use crate::version;
