@@ -6,11 +6,11 @@
 pub use novuskinc_macros::{module_end, module_init};
 
 pub mod console;
+pub mod drivers;
 pub mod elf;
 pub mod fb;
 pub mod fs;
 pub mod firmware;
-pub mod drivers;
 pub mod irq;
 pub mod keyboard;
 pub mod kernel;

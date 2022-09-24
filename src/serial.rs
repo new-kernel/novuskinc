@@ -1,10 +1,27 @@
 use core::fmt::{Arguments, Result, Write};
 use core::ptr::{read_volatile, write_volatile};
+use crate::console::KernelConsoleDriver;
+use crate::drivers::{Driver, DriverResult};
+use crate::drivers::names::SIMPLE_UART;
+use crate::fb::FrameBufferGraphics;
+use crate::keyboard::KeyboardInput;
+use crate::led::Led;
+use crate::prelude::Storage;
 
 extern "C" {
     /// ``early_serial_init`` is used to initialize a ``SimpleUart`` driver, this is usually used
     /// for debugging and comes before the main ``Uart`` driver is initialized.
     pub fn early_serial_init() -> u8;
+}
+
+pub trait Serial: Write {
+    fn read(&self) -> u8 {
+        0
+    }
+
+    fn write(&self, byte: u8) {
+
+    }
 }
 
 /// ``SimpleUart`` is a serial driver mainly used for early printing and debugging
@@ -61,6 +78,35 @@ impl Write for SimpleUart {
         }
 
         Ok(())
+    }
+}
+
+impl KernelConsoleDriver for SimpleUart {}
+
+impl FrameBufferGraphics for SimpleUart {}
+
+impl KeyboardInput for SimpleUart {}
+
+impl Storage for SimpleUart {}
+
+impl Serial for SimpleUart {}
+
+impl Led for SimpleUart {}
+
+impl Driver for SimpleUart {
+    fn driver_name(&self) -> &'static str {
+        return self.name;
+    }
+
+    fn name(&self) -> &'static str {
+        return SIMPLE_UART;
+    }
+
+    /// ``set_addrs`` should be called before this
+    fn init(&self) -> DriverResult {
+        if self.output_addr != 0x0 as *mut u8 && self.input_addr != 0x0 as *mut u8 {
+            return Ok(());
+        } else { return Err("Addresses not set"); }
     }
 }
 
