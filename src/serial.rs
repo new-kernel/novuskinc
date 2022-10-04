@@ -54,7 +54,8 @@ impl SimpleUart {
         };
     }
 
-    /// Set ``SimpleUart`` addresses
+    /// Sets the ``SimpleUart`` addresses. Be careful when setting the I/O addresses, they're
+    /// pointers that are being written and read to regularly.
     pub fn set_addrs(&mut self, out_addr: *mut u8, in_addr: *mut u8) {
         self.output_addr = out_addr;
         self.input_addr = in_addr;
@@ -89,7 +90,17 @@ impl KeyboardInput for SimpleUart {}
 
 impl Storage for SimpleUart {}
 
-impl Serial for SimpleUart {}
+impl Serial for SimpleUart {
+    /// Calls ``self.serial_read_byte``
+    fn read(&self) -> u8 {
+        unsafe { self.serial_read_byte() }
+    }
+
+    /// Calls ``self.serial_write_byte``
+    fn write(&self, byte: u8) {
+        unsafe { self.serial_write_byte(byte); }
+    }
+}
 
 impl Led for SimpleUart {}
 

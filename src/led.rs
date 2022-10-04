@@ -7,4 +7,8 @@ pub trait Led {
     fn on(&mut self) {
 
     }
+
+    fn off(&mut self) {
+
+    }
 }

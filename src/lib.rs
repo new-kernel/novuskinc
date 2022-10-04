@@ -25,6 +25,7 @@ pub mod serial;
 pub mod storage;
 pub mod syscalls;
 pub mod timer;
+pub mod wasmi;
 
 #[cfg(feature = "v3")]
 pub mod v3;
