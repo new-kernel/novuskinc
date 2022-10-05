@@ -1,4 +1,3 @@
-use core::fmt::{Arguments, Write};
 use crate::prelude::*;
 
 pub mod empty;
@@ -11,7 +10,7 @@ extern "C" {
 
 pub type DriverResult = Result<(), &'static str>;
 
-pub trait Driver: Write + KernelConsoleDriver + FrameBufferGraphics + KeyboardInput + Storage + Serial + Led {
+pub trait Driver: KernelConsoleDriver + FrameBufferGraphics + KeyboardInput + Storage + Serial + Led {
     /// The ``driver_name`` function should be used to return the driver's name
     ///
     /// Example:
