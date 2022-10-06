@@ -9,10 +9,14 @@ publish = false
 [workspace]
 members = [
     "macros/",
+    "tests/",
 ]
 
 [dependencies]
 novuskinc_macros = { path = "macros/" }
+
+[dev-dependencies]
+tests = { path = "tests/" }
 
 [features]
 v3 = []

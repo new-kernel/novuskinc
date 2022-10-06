@@ -1,17 +1,21 @@
+use core::cell::Cell;
+
 /// The ``KernelConsole`` struct should be used as a field value of the console driver.
 ///
 /// Example:
 /// ```rust
+/// use novuskinc::console::KernelConsole;
+///
 /// struct ConsoleDriver {
 ///     kernel_console: KernelConsole,
 /// }
 /// ```
-#[derive(Copy, Clone)]
 pub struct KernelConsole {
     pub name: &'static str,
-    pub width: u16,
-    pub height: u16,
-    pub chars_written: u64,
+    pub width: Cell<u16>,
+    pub height: Cell<u16>,
+    pub line: Cell<u16>,
+    pub chars_written: Cell<u64>,
 }
 
 impl KernelConsole {
@@ -31,15 +35,16 @@ impl KernelConsole {
     pub fn new(console_name: &'static str, console_width: u16, console_height: u16) -> Self {
         return KernelConsole {
             name: console_name,
-            width: console_width,
-            height: console_height,
-            chars_written: 0,
+            width: Cell::new(console_width),
+            height: Cell::new(console_height),
+            line: Cell::new(0),
+            chars_written: Cell::new(0),
         };
     }
 
     /// Updates ``self.chars_written``
-    pub fn update_chars_written(&mut self, new_chars: u64) {
-        self.chars_written += new_chars;
+    pub fn update_chars_written(&self, new_chars: u64) {
+        self.chars_written.set(self.chars_written.get() + new_chars);
     }
 }
 
