@@ -1,5 +1,12 @@
 use core::cell::Cell;
 
+extern "C" {
+    /// Initializes the kernel console driver.
+    pub fn console_init();
+    /// Initializes kernel printing, this allows ``printk!`` to work.
+    pub fn printk_init();
+}
+
 /// The ``KernelConsole`` struct should be used as a field value of the console driver.
 ///
 /// Example:
