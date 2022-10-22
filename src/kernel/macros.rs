@@ -1,5 +1,6 @@
 use crate::kernel::types::KernelFunctionName;
 pub use crate::define_kernel_function;
+pub use novuskinc_macros::*;
 
 /// ``define_kernel_function`` is a macro used to define "kernel" functions (important kernel functions)
 /// in kernel modules.

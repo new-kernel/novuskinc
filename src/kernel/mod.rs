@@ -1,4 +1,5 @@
 pub mod macros;
+pub mod panic;
 pub mod types;
 
 extern "C" {

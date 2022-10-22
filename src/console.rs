@@ -5,6 +5,9 @@ extern "C" {
     pub fn console_init();
     /// Initializes kernel printing, this allows ``printk!`` to work.
     pub fn printk_init();
+
+    /// The kernel console driver
+    pub static mut KERNEL_CONSOLE: &'static dyn KernelConsoleDriver;
 }
 
 /// The ``KernelConsole`` struct should be used as a field value of the console driver.
