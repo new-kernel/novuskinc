@@ -60,8 +60,9 @@ pub mod tag {
 }
 
 extern "C" {
-    /// Sets the
     pub fn set_mb_index(i: usize, value: u32);
     pub fn set_mb_buffer(buf: &[u32; 36]);
+    pub fn get_mb_index(i: usize) -> u32;
+    pub fn get_mb_buffer() -> &[u32; 36];
     pub fn call_mb(channel: u32) -> u32;
 }

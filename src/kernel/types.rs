@@ -1,5 +1,5 @@
 /// The ``KernelFunctionName``` enum is used for defining important kernel functions.
-#[allow(non_snake_case)]
+#[allow(non_upper_case_globals)]
 #[derive(Copy, Clone, PartialEq)]
 pub enum KernelFunctionName {
     /// This is an empty function that does nothing, it's just an empty function.
@@ -34,6 +34,12 @@ pub enum KernelFunctionName {
     /// This function is for initializing the device timer. It shouldn't take any arguments.
     device_timer_init,
 
+    /// The device's display information, this should return ```((u16, u16), *mut u32)```.
+    device_display_info,
+
+    /// For initializing a device specific frame buffer.
+    device_fb_init,
+
     /// Initializes early serial I/O, it gets called by [``ArchSetup``](link) from ``setup`` if the
     /// arch kernel needs it. This is mainly for testing in a virtual machine.
     early_serial_init,
@@ -46,4 +52,13 @@ pub enum KernelFunctionName {
 
     /// Initializes ethernet or wireless networking
     net_init,
+
+    /// Sets a value to the index of the mailbox's buffer.
+    set_mb_index,
+    /// Sets the entire mailbox buffer.
+    set_mb_buffer,
+    /// Gets an index from the mailbox's buffer.
+    get_mb_index,
+    /// Get the entire mailbox buffer
+    get_mb_buffer,
 }
