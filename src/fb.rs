@@ -1,6 +1,11 @@
 use core::borrow::BorrowMut;
 use core::fmt::Arguments;
 
+extern "C" {
+    /// This should be defined in the device specific driver, it returns the ((``width``, ``height``), and ``address``).
+    pub fn device_display_info() -> ((u32, u32), usize);
+}
+
 #[derive(Copy, Clone)]
 pub struct FbInfo {
     pub name: &'static str,

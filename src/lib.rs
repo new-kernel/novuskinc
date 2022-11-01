@@ -4,6 +4,7 @@
 #[macro_use] pub extern crate novuskinc_macros;
 
 pub mod console;
+pub mod debug;
 pub mod drivers;
 pub mod elf;
 pub mod fb;
