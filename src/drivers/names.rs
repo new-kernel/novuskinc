@@ -1,6 +1,8 @@
 pub const NONE: &'static str = "None";
 pub const CONSOLE: &'static str = "Console Driver";
 pub const SERIAL: &'static str = "Serial Driver";
+pub const TIMER: &'static str = "Timer Driver";
+pub const FM_INTERFACE: &'static str = "FMI Driver";
 pub const FRAME_BUFFER: &'static str = "Frame Buffer Driver";
 pub const SIMPLE_UART: &'static str = "Simple Uart Driver";
 pub const IRQ_CHIP: &'static str = "IRQ Chip Driver";
