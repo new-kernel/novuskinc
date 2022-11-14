@@ -5,6 +5,7 @@
 
 pub mod console;
 pub mod debug;
+pub mod dif;
 pub mod drivers;
 pub mod elf;
 pub mod fb;
