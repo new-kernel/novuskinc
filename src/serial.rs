@@ -6,7 +6,7 @@ use crate::drivers::names::SIMPLE_UART;
 use crate::fb::FrameBufferGraphics;
 use crate::keyboard::KeyboardInput;
 use crate::led::Led;
-use crate::prelude::Storage;
+use crate::prelude::{Storage, Timer};
 
 extern "C" {
     /// ``early_serial_init`` is used to initialize a ``SimpleUart`` driver, this is usually used
@@ -103,6 +103,8 @@ impl Serial for SimpleUart {
 }
 
 impl Led for SimpleUart {}
+
+impl Timer for SimpleUart {}
 
 impl Driver for SimpleUart {
     fn driver_name(&self) -> &'static str {

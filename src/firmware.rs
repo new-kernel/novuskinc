@@ -9,13 +9,13 @@ pub const FMI_RESPONSE_OTHER: u32 = 2;
 
 ///
 pub trait FirmwareInterface {
-    fn init(&self) { }
+    fn init(&mut self) { }
 
     fn name(&self) -> &'static str { return ""; }
 
-    fn mb_call(&self, channel: u32) -> Result<(), u32> { Err(FMI_RESPONSE_ERROR) }
+    fn mb_call(&mut self, channel: u32) -> Result<(), u32> { Err(FMI_RESPONSE_ERROR) }
 
     fn status(&self) -> u32 { FMI_STATUS_FULL }
 
-    fn add_index(&self, index: usize, val: u32) { }
+    fn add_index(&mut self, index: usize, val: u32) { }
 }

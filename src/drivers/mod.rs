@@ -18,7 +18,7 @@ extern "C" {
 
 pub type DriverResult = Result<(), &'static str>;
 
-pub trait Driver: KernelConsoleDriver + FrameBufferGraphics + KeyboardInput + Storage + Serial + Led {
+pub trait Driver: KernelConsoleDriver + FrameBufferGraphics + KeyboardInput + Storage + Serial + Led + Timer {
     /// The ``driver_name`` function should be used to return the driver's name
     ///
     /// Example:

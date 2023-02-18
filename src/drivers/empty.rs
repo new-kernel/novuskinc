@@ -6,8 +6,15 @@ use crate::fb::FrameBufferGraphics;
 use crate::keyboard::KeyboardInput;
 use crate::led::Led;
 use crate::prelude::{Serial, Storage};
+use crate::timer::Timer;
 
-pub struct EmptyDriver;
+pub struct EmptyDriver {
+    pub v: u32,
+}
+
+impl EmptyDriver {
+
+}
 
 impl KernelConsoleDriver for EmptyDriver {}
 
@@ -24,6 +31,16 @@ impl Write for EmptyDriver {
 impl Serial for EmptyDriver {}
 
 impl Led for EmptyDriver {}
+
+impl Timer for EmptyDriver {
+    fn set_value(&mut self, val: u32) {
+        self.v = val;
+    }
+
+    fn value(&self) -> u32 {
+        self.v
+    }
+}
 
 impl Driver for EmptyDriver {
     fn driver_name(&self) -> &'static str {

@@ -59,7 +59,7 @@ impl KernelModule {
     }
 
     /// Should get called if an error occurs
-    pub fn erroro(&mut self) {
+    pub fn error(&mut self) {
         self.success = false;
     }
 

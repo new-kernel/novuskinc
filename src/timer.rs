@@ -1,3 +1,5 @@
+use core::borrow::BorrowMut;
+
 extern "C" {
     /// Used for adding a timer (usually an interrupt timer) to Novusk's timer list.
     pub fn add_timer(name: &'static str);
@@ -18,7 +20,11 @@ pub trait Timer {
         0
     }
 
-    fn set_value(&self, val: u32) {
+    fn set_value(&mut self, val: u32) {
+
+    }
+
+    fn set_interval(&mut self, int: u32) {
 
     }
 }
