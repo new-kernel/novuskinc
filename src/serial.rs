@@ -116,7 +116,7 @@ impl Driver for SimpleUart {
     }
 
     /// ``set_addrs`` should be called before this
-    fn init(&self) -> DriverResult {
+    fn init(&mut self) -> DriverResult {
         if self.output_addr != 0x0 as *mut u8 && self.input_addr != 0x0 as *mut u8 {
             return Ok(());
         } else { return Err("Addresses not set"); }
