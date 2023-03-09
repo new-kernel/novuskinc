@@ -32,15 +32,12 @@ extern "C" {
 }
 
 pub struct Kernel {
-    version: (u8, u8, u8),
-    kernel_type: KernelType,
-    short: bool,
+    pub version: (u8, u8, u8),
+    pub kernel_type: KernelType,
+    pub short: bool,
 
-    /// Kernel modules that have been linked directly linked to the kernel
-    linked_modules: Vec<&'static mut KernelModule>,
-    /// The file paths to kernel modules that are not linked to the kernel
-    module_paths: Option<&'static mut [&'static str; 50]>,
-    driver_manager: Option<DeviceDriverManager>,
+    /// Names of kernel modules that have been linked directly linked to the kernel
+    pub module_names: Vec<&'static str>,
 }
 
 impl Kernel {
@@ -49,27 +46,22 @@ impl Kernel {
             version: version,
             kernel_type: kernel_type,
             short: short,
-            linked_modules: vec![],
-            module_paths: None,
-            driver_manager: None,
+            module_names: vec![],
         };
     }
 
-    pub fn add_linked_module(&mut self, module: &'static mut KernelModule) -> u8 {
-        self.linked_modules.push(module);
-        return 1;
+    pub fn add_linked_module_name(&mut self, name: &'static str) {
+        self.module_names.push(name);
     }
 
-    pub fn run_linked_module(&mut self, module: &'static str) {
-        for i in 0..self.linked_modules.len() {
-            if self.linked_modules[i].name() == module {
-                unsafe { self.linked_modules[i].run(); }
-            }
+    pub fn run_modules(&mut self) {
+        for module in &self.module_names {
+            unsafe { run_kernel_module(*module); }
         }
     }
 
     pub fn start_init(&mut self) {
-        // self.kernel_type.run(&mut self);
+
     }
 
     pub fn version(&self) -> (u8, u8, u8) {
