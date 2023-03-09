@@ -14,6 +14,7 @@ members = [
 
 [dependencies]
 novuskinc_macros = { path = "macros/" }
+spin = "0.9.5"
 
 [dev-dependencies]
 tests = { path = "tests/" }

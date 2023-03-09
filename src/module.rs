@@ -15,6 +15,7 @@ pub unsafe fn bytes_to_KernelModule(bytes: &[u8]) -> KernelModule {
 }
 
 /// A struct for kernel modules that are linked to Novusk
+#[derive(Copy, Clone)]
 pub struct KernelModule {
     name: &'static str,
     pub initialized: bool,
