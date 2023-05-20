@@ -1,3 +1,42 @@
+use crate::kernel::Kernel;
+
+#[derive(Copy, Clone)]
+pub enum KernelType {
+    LibraryKernel {
+        loop_fun: Option<fn(&mut Kernel, usize) -> i32>,
+        loops: usize,
+    },
+    RegularKernel {
+        init_path: &'static str,
+        start_path: &'static str,
+        init_fun: unsafe extern "C" fn(),
+    }
+}
+
+impl KernelType {
+    pub fn run(&mut self, kernel: &mut Kernel) {
+        match self {
+            KernelType::LibraryKernel {
+                loop_fun,
+                loops,
+            } => {
+                *loops += 1;
+                if loop_fun.is_some() {
+                    (loop_fun.unwrap())(kernel, *loops);
+                }
+            },
+            KernelType::RegularKernel {
+                init_path,
+                start_path,
+                init_fun,
+            } => {
+                unsafe { (init_fun)(); }
+            },
+        }
+    }
+}
+
+
 /// The ``KernelFunctionName``` enum is used for defining important kernel functions.
 #[allow(non_upper_case_globals)]
 #[derive(Copy, Clone, PartialEq)]

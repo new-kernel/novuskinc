@@ -8,6 +8,7 @@ pub mod debug;
 pub mod dif;
 pub mod drivers;
 pub mod elf;
+pub mod exe;
 pub mod fb;
 pub mod fs;
 pub mod firmware;
@@ -23,7 +24,6 @@ pub mod power;
 pub mod prelude;
 pub mod serial;
 pub mod storage;
-pub mod syscalls;
 pub mod timer;
 pub mod wasmi;
 

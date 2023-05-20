@@ -7,10 +7,10 @@ pub mod names;
 extern "C" {
     /// ``get_driver`` gets a driver named ``name``. It is usually used for architectures that don't
     /// have a good or proper allocator.
-    pub fn get_driver(name: &'static str) -> Option<&'static dyn Driver>;
+    pub fn get_driver(name: &'static str) -> Option<&'static mut dyn Driver>;
 
     /// Adds a driver to the architecture's device driver struct.
-    pub fn add_driver(driver: &'static dyn Driver);
+    pub fn add_driver(driver: &'static mut dyn Driver);
 
     /// Removes a driver
     pub fn remove_driver(name: &'static str);
