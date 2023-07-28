@@ -15,6 +15,7 @@ members = [
 [dependencies]
 novuskinc_macros = { path = "macros/" }
 spin = "0.9.5"
+lazy_static = { version = "1.4.0", features = ["spin_no_std"] }
 
 [dev-dependencies]
 tests = { path = "tests/" }

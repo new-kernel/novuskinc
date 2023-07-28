@@ -17,6 +17,7 @@ pub mod keyboard;
 pub mod kernel;
 pub mod led;
 pub mod mb;
+pub mod memory;
 pub mod module;
 pub mod net;
 pub mod platform;
