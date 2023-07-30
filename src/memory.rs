@@ -1,3 +1,4 @@
+use core::borrow::Borrow;
 use core::cell::Cell;
 
 /// A kernel memory region, contains the start and end of the memory.
@@ -106,7 +107,8 @@ impl KernelMemory {
         return Err("No memory available to take");
     }
 
-    pub fn available(&self) -> &KernelMemoryRegion {
-        return &self.memory.get()
+    pub fn available(&self) -> *const KernelMemoryRegion {
+        let mem = &self.memory;
+        return &mem.get() as *const KernelMemoryRegion
     }
 }
