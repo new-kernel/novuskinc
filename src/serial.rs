@@ -9,19 +9,22 @@ use crate::led::Led;
 use crate::prelude::{Storage, Timer};
 
 extern "C" {
-    /// ``early_serial_init`` is used to initialize a ``SimpleUart`` driver, this is usually used
+    /// ``early_serial_init`` would be used to initialize a ``SimpleUart`` driver, this is usually used
     /// for debugging and comes before the main ``Uart`` driver is initialized.
     pub fn early_serial_init() -> u8;
+    /// ``serial_init`` is used to initialize a serial driver and any serial ports
+    pub fn serial_init() -> u8;
+
+    /// Write a byte (``b``) to a serial port, ``serial`` is the port number
+    pub fn serial_write_byte(serial: usize, b: u8) -> u8;
+    /// Read a byte from a serial port,
+    pub fn serial_read_byte(serial: usize) -> u8;
 }
 
 pub trait Serial: Write {
-    fn read(&self) -> u8 {
-        0
-    }
-
-    fn write(&self, byte: u8) {
-
-    }
+    fn read(&self) -> u8 { 0 }
+    fn write(&self, byte: u8) { }
+    fn number(&self) -> usize { 0 }
 }
 
 /// ``SimpleUart`` is a serial driver mainly used for early printing and debugging
